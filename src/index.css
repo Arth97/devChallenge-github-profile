@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  margin: 0;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.large-text {
+  font-size: 2rem; /* 32px */
+  font-weight: 700; /* Bold */
+}
+
+.title-text {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500; /* Medium */
+}
+
+.body-text {
+  font-size: 1rem; /* 16px */
+  font-weight: 400; /* Regular */
+}
+
+.small-text {
+  font-size: 0.75rem; /* 12px */
+  font-weight: 400; /* Regular */
+}
