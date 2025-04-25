@@ -24,3 +24,9 @@
 	height: 100%;
 	width: 100%;
 }
+
+.all-repo-button {
+	cursor: pointer;
+	color: var(--color-light-gray);
+	align-self: center;
+}

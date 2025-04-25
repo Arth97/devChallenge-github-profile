@@ -7,8 +7,8 @@ const UserInfo = ({userInfo}) => {
 	const {userImg, followers, following, location} = userInfo;
 
   return (
-    <div className="user-info flex justify-between">
-			<img src={userImg} width={105} height={105} alt="User Avatar" className="user-avatar" />
+    <div className="user-info">
+			<img src={userImg} width={125} height={125} alt="User Avatar" className="user-avatar" />
       {/* <div className="info-tag title-text">Image</div> */}
 			<div className="info-tag title-text">Followers | {followers}</div>
 			<div className="info-tag title-text">Following | {following}</div>

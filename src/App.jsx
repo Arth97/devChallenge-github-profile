@@ -59,6 +59,7 @@ function App() {
 					<p className="body-text">{userData?.bio}</p>
 				</div>
 				<RepoCard />
+				<button className="all-repo-button">View all repositories</button>
 			</main>
     </div>
   );
