@@ -55,8 +55,8 @@ function App() {
 			<main className="App-main">
 				<UserInfo userInfo={userInfo} />
 				<div>
-					<h1>GitHub</h1>
-					<p>How people build software</p>
+					<h1 className="large-text">{userData?.name}</h1>
+					<p className="body-text">{userData?.bio}</p>
 				</div>
 				<RepoCard />
 			</main>

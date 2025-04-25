@@ -1,23 +1,10 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-#root {
-	height: 100vh;
-	width: 100vw;
-}
-
-body {
+body, h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   font-family: 'Be Vietnam Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,34 +12,60 @@ body {
 }
 
 .large-text {
-  font-size: 2rem; /* 32px */
-  font-weight: 700; /* Bold */
+  font-size: 32px;
+  font-weight: 500;
 	color: var(--color-light-gray);
 }
 
 .title-text {
-  font-size: 1.25rem; /* 20px */
-  font-weight: 500; /* Medium */
+  font-size: 20px;
+  font-weight: 500;
 	color: var(--color-light-gray);
 }
 
 .body-text {
-  font-size: 1rem; /* 16px */
-  font-weight: 400; /* Regular */
-	color: var(--color-gray);
+  font-size: 16px;
+  font-weight: 400;
+	color: var(--color-light-gray);
 }
 
 .small-text {
-  font-size: 0.75rem; /* 12px */
-  font-weight: 400; /* Regular */
+  font-size: 12px;
+  font-weight: 400;
 	color: var(--color-gray);
 }
 
 :root {
-	--color-light-gray: #97A3B6;
-	--color-gray: #CDD5E0;
+	--color-light-gray: #CDD5E0;
+	--color-gray: #97A3B6;
 	--color-dark-gray: #20293A;
 	--color-medium-blue: #364153;
 	--color-dark-blue: #111729;
 	--color-deep-blue: #1D1B48;
+}
+
+body::before {
+	width: 100%;
+	height: 240px;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url('../public/hero-image-github-profile.jpg');
+	background-size: cover;
+	background-position: center;
+	z-index: -10;
+}
+
+body {
+	min-height: 100vh;
+	height: 100%;
+	width: 100vw;
+	background-color: var(--color-dark-gray);
+}
+
+#root {
+	height: 100%;
+	width: 100%;
 }
