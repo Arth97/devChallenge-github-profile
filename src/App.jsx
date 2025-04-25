@@ -26,7 +26,6 @@ function App() {
 					following: data.following,
 					location: data.location
 				})
-				console.log("userInfo", userInfo);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -55,8 +54,10 @@ function App() {
       </header>
 			<main className="App-main">
 				<UserInfo userInfo={userInfo} />
-				<h1>GitHub</h1>
-				<p>How people build software</p>
+				<div>
+					<h1>GitHub</h1>
+					<p>How people build software</p>
+				</div>
 				<RepoCard />
 			</main>
     </div>

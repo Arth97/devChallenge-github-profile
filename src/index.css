@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+#root {
+	height: 100vh;
+	width: 100vw;
+}
+
 body {
   margin: 0;
   font-family: 'Be Vietnam Pro', sans-serif;
@@ -22,19 +27,32 @@ body {
 .large-text {
   font-size: 2rem; /* 32px */
   font-weight: 700; /* Bold */
+	color: var(--color-light-gray);
 }
 
 .title-text {
   font-size: 1.25rem; /* 20px */
   font-weight: 500; /* Medium */
+	color: var(--color-light-gray);
 }
 
 .body-text {
   font-size: 1rem; /* 16px */
   font-weight: 400; /* Regular */
+	color: var(--color-gray);
 }
 
 .small-text {
   font-size: 0.75rem; /* 12px */
   font-weight: 400; /* Regular */
+	color: var(--color-gray);
+}
+
+:root {
+	--color-light-gray: #97A3B6;
+	--color-gray: #CDD5E0;
+	--color-dark-gray: #20293A;
+	--color-medium-blue: #364153;
+	--color-dark-blue: #111729;
+	--color-deep-blue: #1D1B48;
 }
