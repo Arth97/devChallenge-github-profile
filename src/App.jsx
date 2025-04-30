@@ -1,10 +1,11 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import UserInfo from './components/UserInfo/userInfo.jsx';
-import RepoCard from './components/RepoCard/repoCard.jsx';
+import RepoCardList from './components/RepoCardList/repoCardList.jsx';
 
 function App() {
 	const [userData, setUserData] = useState(null);
+	const [userRepos, setUserRepos] = useState(null);
 	const [userInfo, setUserInfo] = useState({
 		userImg: '',
 		followers: 0,
@@ -18,7 +19,7 @@ function App() {
 		fetch(`https://api.github.com/users/${user}`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log("data", data);
+				console.log("userData", data);
 				setUserData(data);
 				setUserInfo({
 					userImg: data.avatar_url,
@@ -26,6 +27,16 @@ function App() {
 					following: data.following,
 					location: data.location
 				})
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+			
+		fetch(`https://api.github.com/users/${user}/repos`)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log("userRepos", data);
+				setUserRepos(data);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -58,7 +69,7 @@ function App() {
 					<h1 className="large-text">{userData?.name}</h1>
 					<p className="body-text">{userData?.bio}</p>
 				</div>
-				<RepoCard />
+				<RepoCardList userRepos={userRepos} />
 				<button className="all-repo-button">View all repositories</button>
 			</main>
     </div>
