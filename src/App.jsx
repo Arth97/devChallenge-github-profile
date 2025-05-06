@@ -63,6 +63,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+				<input className="search-input" type="search" name="searchUser" id="searchUser" />
       </header>
 			<main className="App-main">
 				<UserInfo userInfo={userInfo} />

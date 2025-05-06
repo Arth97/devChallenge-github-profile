@@ -9,10 +9,8 @@
 }
 
 .App-header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	position: absolute;
+	top: 30px;
 }
 
 .App-main {
@@ -29,4 +27,13 @@
 	cursor: pointer;
 	color: var(--color-light-gray);
 	align-self: center;
+}
+
+.search-input {
+	width: 485px;
+	height: 55px;
+	padding: 20px;
+	border-radius: 10px;
+	color: var(--color-light-gray);
+	background-color: var(--color-dark-gray);
 }
