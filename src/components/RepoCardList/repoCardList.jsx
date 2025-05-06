@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import './repoCardList.css';
 import RepoCard from './RepoCard/repoCard.jsx';
 
-const RepoCardList = ({userRepos}) => {
-
-	useEffect(() => {
-		console.log("userRepos222", userRepos);
-	}, [userRepos]);
-
+const RepoCardList = ({userRepos, fullView}) => {
   return (
     <div className="repo-card-list">
-			{userRepos?.map((repoData) => (
-				<RepoCard key={repoData.id} repoData={repoData} />
-			))}
+			{	fullView ? 
+				userRepos?.map((repoData) => (
+					<RepoCard key={repoData.id} repoData={repoData} />
+				)) :
+				userRepos?.slice(0,4).map((repoData) => (
+					<RepoCard key={repoData.id} repoData={repoData} />
+				))
+			}
     </div>
   );
 };

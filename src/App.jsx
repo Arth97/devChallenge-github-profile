@@ -12,6 +12,7 @@ function App() {
 		following: 0,
 		location: 'Unknown'
 	});
+	const [fullView, setFullView] = useState(false);
 
 	const defaultUser = "github";
 
@@ -69,8 +70,8 @@ function App() {
 					<h1 className="large-text">{userData?.name}</h1>
 					<p className="body-text">{userData?.bio}</p>
 				</div>
-				<RepoCardList userRepos={userRepos} />
-				<button className="all-repo-button">View all repositories</button>
+				<RepoCardList userRepos={userRepos} fullView={fullView} />
+				{!fullView && (<button className="all-repo-button" onClick={() => setFullView(true)}>View all repositories</button>)}
 			</main>
     </div>
   );
