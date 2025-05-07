@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import UserInfo from './components/UserInfo/userInfo.jsx';
 import RepoCardList from './components/RepoCardList/repoCardList.jsx';
+import debounce from 'debounce';
 
 function App() {
 	const [userData, setUserData] = useState(null);
@@ -12,9 +13,16 @@ function App() {
 		following: 0,
 		location: 'Unknown'
 	});
+
+	const [usersFound, setUsersFound] = useState(null);
 	const [fullView, setFullView] = useState(false);
 
 	const defaultUser = "github";
+
+	useEffect(() => {
+		fetchUserData(defaultUser);
+		// fetchUsers();
+	}, [])
 
 	const fetchUserData = (user) => {
 		fetch(`https://api.github.com/users/${user}`)
@@ -44,26 +52,42 @@ function App() {
 			});
 	} 
 
-	const fetchUsers = () => {
-		fetch("https://api.github.com/search/users?q=:username")
+	const fetchUsers = (username) => {
+		fetch(`https://api.github.com/search/users?q=${username}`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
+				console.log("userss", data.items);
+				if (data.items.length > 0) {
+					setUsersFound(data.items);
+				}
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}
 
-	useEffect(() => {
-		fetchUserData(defaultUser);
-		// fetchUsers();
-	}, [])
+	const handleSearch = (e) => {
+		fetchUsers(e.target.value)
+		console.log("usersFound", usersFound);
+	}
 
   return (
     <div className="App">
       <header className="App-header">
-				<input className="search-input" type="search" name="searchUser" id="searchUser" />
+				<input onChange={debounce(handleSearch, 1500)} className="search-input" type="search" name="searchUser" id="searchUser" />
+				{usersFound && (
+					<div className="search-results">
+						{usersFound.map((user) => (
+							<div key={user.id} className="search-result flex flex-row gap-4">
+								<img src={user.avatar_url} width={70} height={70} alt={user.login} />
+								<div>
+									<p>{user.login}</p>
+									<p>{user.description}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				)}
       </header>
 			<main className="App-main">
 				<UserInfo userInfo={userInfo} />
