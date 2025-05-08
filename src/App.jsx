@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import UserInfo from './components/UserInfo/userInfo.jsx';
 import RepoCardList from './components/RepoCardList/repoCardList.jsx';
 import debounce from 'debounce';
@@ -13,79 +13,75 @@ function App() {
 		following: 0,
 		location: 'Unknown'
 	});
-
-	const [usersFound, setUsersFound] = useState(null);
+	const [userFound, setUserFound] = useState(null);
 	const [fullView, setFullView] = useState(false);
 
 	const defaultUser = "github";
 
 	useEffect(() => {
-		fetchUserData(defaultUser);
-		// fetchUsers();
-	}, [])
+		(async () => {
+			let userData = await fetchUserData(defaultUser);
+			let userRepos = await fetchUserRepos(defaultUser);
+			saveUser(userData, userRepos);
+		})();
+	}, [])	
 
-	const fetchUserData = (user) => {
-		fetch(`https://api.github.com/users/${user}`)
-			.then((response) => response.json())
-			.then((data) => {
-				console.log("userData", data);
-				setUserData(data);
-				setUserInfo({
-					userImg: data.avatar_url,
-					followers: data.followers,
-					following: data.following,
-					location: data.location
-				})
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-			
-		fetch(`https://api.github.com/users/${user}/repos`)
-			.then((response) => response.json())
-			.then((data) => {
-				console.log("userRepos", data);
-				setUserRepos(data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	} 
-
-	const fetchUsers = (username) => {
-		fetch(`https://api.github.com/search/users?q=${username}`)
-			.then((response) => response.json())
-			.then((data) => {
-				console.log("userss", data.items);
-				if (data.items.length > 0) {
-					setUsersFound(data.items);
-				}
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+	const saveUser = (userData, userRepo) => {
+		setUserData(userData);
+		setUserInfo({
+			userImg: userData.avatar_url,
+			followers: userData.followers,
+			following: userData.following,
+			location: userData.location
+		})
+		setUserRepos(userRepo);
 	}
 
-	const handleSearch = (e) => {
-		fetchUsers(e.target.value)
-		console.log("usersFound", usersFound);
+	const handleSearch = async (e) => {
+		let data = await fetchUserData(e.target.value)
+		setUserFound(data);
+	}
+
+	const saveUserFound = async () => {
+		console.log("userFound userFound", userFound)
+		let userRepos = await fetchUserRepos(userFound.login);
+		console.log("test userRepos", userRepos)
+		saveUser(userFound, userRepos);
+	}
+
+	const fetchUserData = async (user) => {
+		try {
+			const response = await fetch(`https://api.github.com/users/${user}`);
+			const data = await response.json();
+			return data;
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	const fetchUserRepos = async (user) => {
+		try {
+			const response = await fetch(`https://api.github.com/users/${user}/repos`);
+			const data = await response.json();
+			return data;
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
   return (
     <div className="App">
       <header className="App-header">
 				<input onChange={debounce(handleSearch, 1500)} className="search-input" type="search" name="searchUser" id="searchUser" />
-				{usersFound && (
-					<div className="search-results">
-						{usersFound.map((user) => (
-							<div key={user.id} className="search-result flex flex-row gap-4">
-								<img src={user.avatar_url} width={70} height={70} alt={user.login} />
-								<div>
-									<p>{user.login}</p>
-									<p>{user.description}</p>
-								</div>
+				{userFound && (
+					<div className="search-results" onClick={saveUserFound}>
+						<div key={userFound.id} className="search-result flex flex-row gap-4">
+							<img src={userFound.avatar_url} width={70} height={70} alt={userFound.login} />
+							<div className="flex flex-col justify-center">
+								<p classname="body-text">{userFound.name}</p>
+								<p className="small-text">{userFound.bio}</p>
 							</div>
-						))}
+						</div>
 					</div>
 				)}
       </header>
