@@ -8,3 +8,11 @@
 	border-radius: 15px;
 	background: linear-gradient(95deg, #111729 3%, #1d1b48 99.61%);
 }
+
+.truncat {
+	display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

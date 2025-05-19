@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './repoCardList.css';
 import RepoCard from './RepoCard/repoCard.jsx';
 

@@ -1,5 +1,5 @@
 import './App.css';
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserInfo from './components/UserInfo/userInfo.jsx';
 import RepoCardList from './components/RepoCardList/repoCardList.jsx';
 import debounce from 'debounce';
