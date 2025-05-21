@@ -44,9 +44,7 @@ function App() {
 	}
 
 	const saveUserFound = async () => {
-		console.log("userFound userFound", userFound)
 		let userRepos = await fetchUserRepos(userFound.login);
-		console.log("test userRepos", userRepos)
 		saveUser(userFound, userRepos);
 	}
 
