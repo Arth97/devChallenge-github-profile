@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import UserInfo from './components/UserInfo/userInfo.jsx';
+import SearchUser from './components/SearchUser/searchUser.jsx';
 import RepoCardList from './components/RepoCardList/repoCardList.jsx';
 import debounce from 'debounce';
 
@@ -72,18 +73,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-				<input onChange={debounce(handleSearch, 1500)} className="search-input" type="search" name="searchUser" id="searchUser" />
-				{userFound && (
-					<div className="search-results" onClick={saveUserFound}>
-						<div key={userFound.id} className="search-result flex flex-row gap-4">
-							<img src={userFound.avatar_url} width={70} height={70} alt={userFound.login} />
-							<div className="flex flex-col justify-center">
-								<p classname="body-text">{userFound.name}</p>
-								<p className="small-text">{userFound.bio}</p>
-							</div>
-						</div>
-					</div>
-				)}
+				<SearchUser userFound={userFound} handleSearch={handleSearch} saveUserFound={saveUserFound} />
       </header>
 			<main className="App-main">
 				<UserInfo userInfo={userInfo} />
