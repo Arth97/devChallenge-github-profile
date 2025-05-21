@@ -7,6 +7,14 @@
 	margin-top: -45px;
 }
 
+.info-tag-group {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	gap: 20px;
+}
+
 .info-tag {
 	width: fit-content;
 	padding: 15px;
@@ -18,4 +26,28 @@
 	border: 7px solid var(--color-dark-gray);
 	border-radius: 15px;
 	border-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+	.user-info {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	.info-tag-group {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		gap: 15px;
+	}
+}
+
+@media (max-width: 640px) {
+	.info-tag {
+		padding: 10px;
+	}
 }

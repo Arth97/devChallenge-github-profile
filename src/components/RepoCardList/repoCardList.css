@@ -5,3 +5,9 @@
 	row-gap: 35px;
 	column-gap: 35px;
 }
+
+@media (max-width: 768px) {
+	.repo-card-list {
+		grid-template-columns: 1fr;
+	}
+}
