@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import UserInfo from './components/UserInfo/userInfo.jsx';
 import SearchUser from './components/SearchUser/searchUser.jsx';
 import RepoCardList from './components/RepoCardList/repoCardList.jsx';
-import debounce from 'debounce';
 
 function App() {
 	const [userData, setUserData] = useState(null);
