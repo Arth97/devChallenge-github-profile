@@ -3,8 +3,6 @@ import './repoCard.css';
 
 const RepoCard = ({repoData}) => {
 
-	const imgUrl = "devChallenge-github-profile"
-
 	const getUpdatedTime = () => {
 		const updatedDate = new Date(repoData.updated_at);
 		const currentDate = new Date();
@@ -31,16 +29,16 @@ const RepoCard = ({repoData}) => {
 			<div className="flex flex-row gap-2 items-center mt-auto">
 				{repoData.license && (	
 					<div className="body-text flex flex-row">
-						<img src={`${imgUrl}/Chield_alt.svg`} alt="Chield" className="chield-icon" />
+						<img src="/Chield_alt.svg" alt="Chield" className="chield-icon" />
 						<span>{repoData.license.spdx_id}</span>
 					</div>
 				)}
 				<div className="body-text flex flex-row">
-					<img src={`${imgUrl}/Nesting.svg`} alt="Nesting" className="nesting-icon" />
+					<img src="/Nesting.svg" alt="Nesting" className="nesting-icon" />
 					<span>{repoData.forks}</span>
 				</div>
 				<div className="body-text flex flex-row">
-					<img src={`${imgUrl}/Star.svg`} alt="Star" className="star-icon" />
+					<img src="/Star.svg" alt="Star" className="star-icon" />
 					<span>{repoData.stargazers_count}</span>
 				</div>
 				<div className="small-text">
