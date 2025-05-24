@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/devChallenge-github-profile/static/css/main.4d0b260d.css",
-    "main.js": "/devChallenge-github-profile/static/js/main.4893c728.js",
+    "main.js": "/devChallenge-github-profile/static/js/main.c7b86d7f.js",
     "static/media/hero-image-github-profile.jpg": "/devChallenge-github-profile/static/media/hero-image-github-profile.9b5f34b7fbb32db911da.jpg",
     "index.html": "/devChallenge-github-profile/index.html",
     "static/media/Search.svg": "/devChallenge-github-profile/static/media/Search.0e726c5a68149336ed88.svg",
     "main.4d0b260d.css.map": "/devChallenge-github-profile/static/css/main.4d0b260d.css.map",
-    "main.4893c728.js.map": "/devChallenge-github-profile/static/js/main.4893c728.js.map"
+    "main.c7b86d7f.js.map": "/devChallenge-github-profile/static/js/main.c7b86d7f.js.map"
   },
   "entrypoints": [
     "static/css/main.4d0b260d.css",
-    "static/js/main.4893c728.js"
+    "static/js/main.c7b86d7f.js"
   ]
 }
