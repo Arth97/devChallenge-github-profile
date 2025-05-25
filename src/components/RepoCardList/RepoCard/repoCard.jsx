@@ -23,7 +23,7 @@ const RepoCard = ({repoData}) => {
 	};
 
   return (
-    <div className="repo-card">
+    <div className="repo-card" onClick={() => window.open(repoData.html_url, '_blank')}>
       <p className="title-text">{repoData.name}</p>
       <p className="body-text truncat h-full">{repoData.description}</p>
 			<div className="flex flex-row gap-2 items-center mt-auto">

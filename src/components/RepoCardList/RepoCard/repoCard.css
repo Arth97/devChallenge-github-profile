@@ -9,6 +9,11 @@
 	background: linear-gradient(95deg, #111729 3%, #1d1b48 99.61%);
 }
 
+.repo-card:hover {
+	cursor: pointer;
+	transform: scale(1.02);
+}
+
 .truncat {
 	display: -webkit-box;
   -webkit-line-clamp: 2;
